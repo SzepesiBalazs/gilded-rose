@@ -1,3 +1,5 @@
 export default class Item {
-  constructor() {}
+  constructor(quality = 0) {
+    this.quality = quality;
+  }
 }
