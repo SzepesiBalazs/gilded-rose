@@ -11,8 +11,10 @@ export default class Inventory {
   }
 
   removeExpiredItems() {
-    this.items = this.items.filter((item) =>
-      moment(item.expiryDate).isAfter(moment(this.currentDate))
+    this.items = this.items.filter(
+      (item) =>
+        item.goodForDays === Infinity ||
+        moment(item.expiryDate).isAfter(moment(this.currentDate))
     );
   }
 }
