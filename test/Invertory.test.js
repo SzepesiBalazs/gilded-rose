@@ -137,12 +137,33 @@ describe("Gilded-rose", () => {
     inventory.handleItems()
 
     expect(chocolate.quality).toBe(56);
+  });  
+  
+  test("Chocolate should have 56 quality 5 days after the initialization", () => {
+    const chocolate = new Chocolate();
+    const inventory = new Inventory();
+
+    inventory.addItem(chocolate)
+
+    inventory.currentDate = moment().add(5, "days").format("YYYY-MM-DD");
+
+    inventory.handleItems()
+
+    expect(chocolate.quality).toBe(56);
+  });  
+  
+  test("Chocolate should have 54 quality 6 days after the initialization", () => {
+    const chocolate = new Chocolate();
+    const inventory = new Inventory();
+
+    inventory.addItem(chocolate)
+
+    inventory.currentDate = moment().add(6, "days").format("YYYY-MM-DD");
+
+    inventory.handleItems()
+
+    expect(chocolate.quality).toBe(54);
   });
 });
 
-//add new item chocolate and calculate quality differently
-//chocolate decreases in quality by 2 in every 3 days
-//test case quality should be 58 on inicialization
-//test case 2, quality should be 56 after 3 days passes
-//test case 3, quality should be 56 after 5 days passes
-//test case 4, quality should be 54 after 6 days passes
+
