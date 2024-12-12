@@ -17,4 +17,16 @@ export default class Inventory {
         moment(item.expiryDate).isAfter(moment(this.currentDate))
     );
   }
+
+  handleItems() {
+    this.removeExpiredItems();
+    this.calculateQuality();
+  }
+
+  calculateQuality() {
+    this.items = this.items.map(
+      (item) => item.calculateQuality(this.currentDate)
+    
+    );
+  }
 }
