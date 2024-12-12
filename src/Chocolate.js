@@ -10,7 +10,6 @@ export default class Chocolate extends Item {
     const arrivedDate = moment(this.arrivedDate);
 
     const differenceInDays = currentDate.diff(arrivedDate, "days");
-
     const decreaseQuality = Math.floor(differenceInDays / 3) * 2;
 
     this.quality -= decreaseQuality;

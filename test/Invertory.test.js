@@ -130,40 +130,65 @@ describe("Gilded-rose", () => {
     const chocolate = new Chocolate();
     const inventory = new Inventory();
 
-    inventory.addItem(chocolate)
+    inventory.addItem(chocolate);
 
     inventory.currentDate = moment().add(3, "days").format("YYYY-MM-DD");
 
-    inventory.handleItems()
+    inventory.handleItems();
 
     expect(chocolate.quality).toBe(56);
-  });  
-  
+  });
+
   test("Chocolate should have 56 quality 5 days after the initialization", () => {
     const chocolate = new Chocolate();
     const inventory = new Inventory();
 
-    inventory.addItem(chocolate)
+    inventory.addItem(chocolate);
 
     inventory.currentDate = moment().add(5, "days").format("YYYY-MM-DD");
 
-    inventory.handleItems()
+    inventory.handleItems();
 
     expect(chocolate.quality).toBe(56);
-  });  
-  
+  });
+
   test("Chocolate should have 54 quality 6 days after the initialization", () => {
     const chocolate = new Chocolate();
     const inventory = new Inventory();
 
-    inventory.addItem(chocolate)
+    inventory.addItem(chocolate);
 
     inventory.currentDate = moment().add(6, "days").format("YYYY-MM-DD");
 
-    inventory.handleItems()
+    inventory.handleItems();
 
     expect(chocolate.quality).toBe(54);
   });
+
+  test("if chocolate has 0 quality, it should be automatically removed", () => {
+    const chocolate = new Chocolate();
+    const inventory = new Inventory();
+
+    chocolate.quality = 0;
+
+    inventory.addItem(chocolate);
+
+    inventory.handleItems();
+
+    expect(inventory.items[0] instanceof Chocolate).toBe(false);
+    expect(inventory.items.length).toBe(0);
+  });  
+  
+  test("if chocolate has 1 quality and it's instance should be true", () => {
+    const chocolate = new Chocolate();
+    const inventory = new Inventory();
+
+    chocolate.quality = 1;
+
+    inventory.addItem(chocolate);
+
+    inventory.handleItems();
+
+    expect(inventory.items[0] instanceof Chocolate).toBe(true);
+  });
 });
-
-

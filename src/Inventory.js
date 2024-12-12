@@ -14,7 +14,8 @@ export default class Inventory {
     this.items = this.items.filter(
       (item) =>
         item.goodForDays === Infinity ||
-        moment(item.expiryDate).isAfter(moment(this.currentDate))
+        (moment(item.expiryDate).isAfter(moment(this.currentDate)) &&
+          item.quality > 0)
     );
   }
 
@@ -24,9 +25,8 @@ export default class Inventory {
   }
 
   calculateQuality() {
-    this.items = this.items.map(
-      (item) => item.calculateQuality(this.currentDate)
-    
+    this.items.forEach((item) =>
+      item.calculateQuality(this.currentDate)
     );
   }
 }

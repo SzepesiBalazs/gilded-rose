@@ -1,7 +1,7 @@
 import moment from "moment";
 
 export default class Item {
-  constructor(quality = 0, goodForDays = 5, rarity = null) {
+  constructor(quality = 1, goodForDays = 5, rarity = null) {
     this.quality = quality;
     this.goodForDays = goodForDays;
     this.rarity = rarity;
